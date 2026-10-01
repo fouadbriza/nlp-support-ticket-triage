@@ -15,5 +15,5 @@ __pycache__/
 Thumbs.db
 
 PROJECT.md
-data/
-models/
+/data/
+/models/
