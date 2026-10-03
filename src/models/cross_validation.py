@@ -4,6 +4,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 
 TRAIN_PATH = os.path.join("data", "processed", "train.csv")
@@ -18,6 +19,8 @@ def compare_models():
         "Decision Tree (depth=10)":     DecisionTreeClassifier(max_depth=10, random_state=42),
         "Decision Tree (depth=50)":     DecisionTreeClassifier(max_depth=50, random_state=42),
         "Decision Tree (unlimited)":    DecisionTreeClassifier(max_depth=None, random_state=42),
+        "Random Forest (100 trees)":     RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1),
+        "Random Forest (300 trees)":     RandomForestClassifier(n_estimators=300, random_state=42, n_jobs=-1),
     }
 
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
